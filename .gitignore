@@ -24,8 +24,9 @@ Temporary Items
 .apdisk
 
 
-### User 
+### User ### 
 
 # Remove private files
 
 .bashrc.d/private*
+!.bashrc.d/private_example # An example file
