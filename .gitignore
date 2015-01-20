@@ -22,3 +22,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+### User 
+
+# Remove private files
+
+.bashrc.d/private*
