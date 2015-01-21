@@ -42,5 +42,24 @@ This is how I like my terminal. Decisions about colours, layout, fonts and featu
 
 Features will come and go as I see fit, I will do my best to tag a release before making a major change to allow others to stick with a version they like. I may even make this more modular in future to allow for turning on different options.
 
+####Screenshots
+
+Screenshots using these dotfiles and my [piperita][1] theme.
+
+#####Return code testing
+![alt text](http://i.imgur.com/6fr0gB1.png "Return code")
+
+#####Escalating to root
+![alt text](http://i.imgur.com/Ag6zNRd.png "Root")
+
+#####Grep a file
+![alt text](http://i.imgur.com/XO5JAwB.png "Grep")
+
+#####Man page
+![alt text](http://i.imgur.com/gOudKTc.png "Man")
+
+#####Git workflow
+![alt text](http://i.imgur.com/0rr9Ulz.png "Git")
+
 
 [1]: https://github.com/jacobtomlinson/terminal-piperita
