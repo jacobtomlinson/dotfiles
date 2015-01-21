@@ -28,5 +28,10 @@ Coming soon! You will just need to checkout the repo and run `./install.sh` whic
 
 You can make use of my dotfiles by forking the repository and cloning it to your local machine. I would then recommend creating symlinks from `~/.bashrc` to `/location/of/dotfiles/repo/.bashrc` for each item in this repo that you want to use. That way when you change things you can still track the changes in git.
 
+## Disclaimer
+This is how I like my terminal. Decisions about colours, layout, fonts and features are often influenced by my current project, whatever that may be. Things will change to suit my needs, this repository is to allow me to quickly put my preferred settings on a new machine as well as share it with others.
+
+Features will come and go as I see fit, I will do my best to tag a release before making a major change to allow others to stick with a version they like. I may even make this more modular in future to allow for turning on different options.
+
 
 [1]: https://github.com/jacobtomlinson/terminal-piperita
