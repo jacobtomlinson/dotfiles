@@ -2,6 +2,15 @@
 
 These are my dotfiles. They were originally part of my [piperita][1] terminal theme but I have decided to separate them from the theme.
 
+###Features
+* Prompt separated by colours
+* User identifier changes colour depending on command return code
+* Username changes colour based on whether superuser or not
+* Displays current branch and status when in a git controlled directory
+* Pretty man highlighing
+* Grep highlighting
+* Vi/Vim syntax highlighting
+
 ## bashrc and bashrc.d
 
 When developing my `.bashrc` I found it getting unwieldy and difficult to manage. Therefore I decided to create a `.bashrc.d` directory.
