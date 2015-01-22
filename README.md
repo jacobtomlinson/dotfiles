@@ -31,7 +31,7 @@ This is the way I do it. More details to follow.
 
 ### Scripted
 
-Coming soon! You will just need to checkout the repo and run `./install.sh` which will create all the symlinks for you.
+Just checkout the repo and run `./install.sh` which will create all the symlinks for you. Easy!
 
 ### Manual
 
