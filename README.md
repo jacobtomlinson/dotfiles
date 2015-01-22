@@ -27,7 +27,9 @@ That way I can keep my private aliases private.
 
 ### Boxen
 
-This is the way I do it. Simply copy the contents of [boxen.pp](boxen.pp) into your manifest.
+This is the way I do it. Simply copy the contents of [boxen.pp](boxen.pp) into your personal boxen manifest. 
+
+If you need to run it again just `rm ~/.bashrc` and run `boxen` again. 
 
 ### Scripted
 
@@ -35,7 +37,13 @@ Just checkout the repo and run `./install.sh` which will create all the symlinks
 
 ### Manual
 
-You can make use of my dotfiles by forking the repository and cloning it to your local machine. I would then recommend creating symlinks from `~/.bashrc` to `/location/of/dotfiles/repo/.bashrc` for each item in this repo that you want to use. That way when you change things you can still track the changes in git.
+Clone the repo and create symlinks from `~/.bashrc` to `/location/of/dotfiles/repo/.bashrc` for each item in this repo that you want to use. That way when you change things you can still track the changes in git.
+
+## Updates
+
+If you want to update your scripts in the future when I make changes simply do a git pull on the repository (if you used boxen it probably put the repo in `~/src/dotfiles`). 
+
+If you used boxen or the install script then just run it again and it will update your symlinks. If you created them manually then just check that everything you want is symlinked to the right place.
 
 ## Disclaimer
 This is how I like my terminal. Decisions about colours, layout, fonts and features are often influenced by my current project, whatever that may be. Things will change to suit my needs, this repository is to allow me to quickly put my preferred settings on a new machine as well as share it with others.
