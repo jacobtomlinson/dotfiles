@@ -19,7 +19,7 @@ My `.bashrc` is now just a few lines which source all the files included in `.ba
 
 ### Private files
 
-Having my `.bashrc` content in separate files also allows me to create private files which may contain things like ssh aliases to private servers etc. This repository is configured to ignore any files in `.bashrc.d` which begin with the word "private".
+Having my `.bashrc` content in separate files also allows me to create private files which may contain things like ssh aliases to private servers etc. This repository is configured to ignore any files in `.bashrc.d` which begin with the word "private", see [.bashrc.d/private_example](.bashrc.d/private_example) for an example.
 
 That way I can keep my private aliases private.
 
