@@ -29,4 +29,5 @@ Temporary Items
 # Remove private files
 
 .bashrc.d/private*
-!.bashrc.d/private_example # An example file
+!.bashrc.d/private_example
+
