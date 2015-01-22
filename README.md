@@ -27,7 +27,7 @@ That way I can keep my private aliases private.
 
 ### Boxen
 
-This is the way I do it. More details to follow.
+This is the way I do it. Simply copy the contents of [boxen.pp](boxen.pp) into your manifest.
 
 ### Scripted
 
