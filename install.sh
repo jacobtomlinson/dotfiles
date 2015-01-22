@@ -3,13 +3,13 @@
 # Script to install my dotfiles
 
 BACKUPDIR="$HOME/dotfiles-backup/"
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P )
 
 link_file ()
 { 
 
   if [ -h "$HOME/$1" ]; then
-    if [ "$(readlink $HOME/$1)" == $DIR/$1 ]; then
+    if [ "$(pwd -P $HOME/$1)/$1" == $DIR/$1 ]; then
       echo "Your $1 is already linked up, good job!"
     else
       echo "Your $1 is already a symlink to something else, I'll leave you to fix that. Quickest fix is to delete the link and run this script again."
