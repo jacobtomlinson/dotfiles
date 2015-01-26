@@ -86,4 +86,8 @@ prompt_cmd () {
 
 PROMPT_COMMAND='prompt_cmd'
 
+if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
+  PROMPT_COMMAND="$PROMPT_COMMAND;update_terminal_cwd;"
+fi
+
 export CLICOLOR=1
