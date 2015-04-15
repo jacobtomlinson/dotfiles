@@ -1,6 +1,6 @@
 # Jacob Tomlinson's dotfiles
 
-These are my dotfiles. They were originally part of my [piperita][1] terminal theme but I have decided to separate them from the theme.
+These are my dotfiles. They were originally part of my [piperita][1] terminal theme but I have decided to separate them.
 
 ###Features
 * Prompt separated by colours
@@ -21,15 +21,16 @@ My `.bashrc` is now just a few lines which source all the files included in `.ba
 
 Having my `.bashrc` content in separate files also allows me to create private files which may contain things like ssh aliases to private servers etc. This repository is configured to ignore any files in `.bashrc.d` which begin with the word "private", see [.bashrc.d/private_example](.bashrc.d/private_example) for an example.
 
-That way I can keep my private aliases private.
+This way I can keep my private aliases private.
 
 ## Installation
 
 ### Boxen
 
-This is the way I do it. Simply copy the contents of [boxen.pp](boxen.pp) into your personal boxen manifest. 
+This is the way I do it. Simply copy the contents of [boxen.pp](boxen.pp) into your personal boxen manifest. Update the repo name if you've forked this or leave it the same to use mine. Then just
+run `boxen`.
 
-If you need to run it again just `rm ~/.bashrc` and run `boxen` again. 
+If you need to run it again just `rm ~/.bashrc` and run `boxen` again.
 
 ### Scripted
 
@@ -37,11 +38,11 @@ Just checkout the repo and run `./install.sh` which will create all the symlinks
 
 ### Manual
 
-Clone the repo and create symlinks from `~/.bashrc` to `/location/of/dotfiles/repo/.bashrc` for each item in this repo that you want to use. That way when you change things you can still track the changes in git.
+Clone the repo and create symlinks from `~/.bashrc` to `/location/of/dotfiles/repo/.bashrc` for each item in this repo that you want to use. This way when you change things you can still track the changes in git.
 
 ## Updates
 
-If you want to update your scripts in the future when I make changes simply do a git pull on the repository (if you used boxen it probably put the repo in `~/src/dotfiles`). 
+If you want to update your scripts in the future when I make changes simply do a git pull on the repository (if you used boxen it probably put the repo in `~/src/dotfiles`).
 
 If you used boxen or the install script then just run it again and it will update your symlinks. If you created them manually then just check that everything you want is symlinked to the right place.
 
@@ -52,7 +53,7 @@ Features will come and go as I see fit, I will do my best to tag a release befor
 
 ####Screenshots
 
-Screenshots using these dotfiles and my [piperita][1] theme in [iTerm2][2].
+Screenshots using these dotfiles and my [piperita][1] theme together in [iTerm2][2].
 
 #####Return code testing
 ![alt text](http://i.imgur.com/6fr0gB1.png "Return code")
