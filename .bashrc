@@ -7,6 +7,6 @@
 # Source all files in ~/.bashrc.d/
 for i in ~/.bashrc.d/* ; do
     if [ -r "$i" ]; then
-        . $i
+        source $i
     fi
 done

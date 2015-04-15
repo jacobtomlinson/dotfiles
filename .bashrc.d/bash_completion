@@ -1,4 +1,4 @@
 # Source bash completion if installed
 if [ -f `/opt/boxen/homebrew/bin/brew --prefix`/etc/bash_completion ]; then
-    . `/opt/boxen/homebrew/bin/brew --prefix`/etc/bash_completion
+    source `/opt/boxen/homebrew/bin/brew --prefix`/etc/bash_completion
 fi
