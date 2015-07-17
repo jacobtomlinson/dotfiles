@@ -1,6 +1,13 @@
 # Source bash completion if installed
+
+# OS X
 if [ -f /opt/boxen/homebrew/bin/brew ]; then
   if [ -f `/opt/boxen/homebrew/bin/brew --prefix`/etc/bash_completion ]; then
     source `/opt/boxen/homebrew/bin/brew --prefix`/etc/bash_completion
   fi
+fi
+
+# Linux
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+  source /usr/share/bash-completion/bash_completion
 fi
