@@ -6,7 +6,7 @@ BACKUPDIR="$HOME/dotfiles-backup/"
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P )
 
 link_file ()
-{ 
+{
 
   if [ -h "$HOME/$1" ]; then
     if [ "$(pwd -P $HOME/$1)/$1" == $DIR/$1 ]; then
@@ -32,12 +32,16 @@ link_file ()
     else
       echo "$DIR/$1 failed to link to $HOME/$1. Investigate and try again."
       exit 1
-    fi 
+    fi
 
   fi
-} 
+}
 
 link_file .bashrc
+link_file .bash_profile
 link_file .bashrc.d
 link_file .vimrc
-link_file .bash_profile
+link_file .vim
+link_file .tmux.config
+
+git submodule foreach --recursive git checkout master
