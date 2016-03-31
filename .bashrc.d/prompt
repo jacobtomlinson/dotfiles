@@ -1,11 +1,11 @@
 # Environment variables to set prompt format and color
-export COLOR_BOLD="\[\e[1m\]"
-export COLOR_DEFAULT="\[\e[0m\]"
-export COLOR_WHITE="\[\033[m\]"
-export COLOR_GREEN="\[\033[32m\]"
-export COLOR_YELLOW="\[\033[33;1m\]"
-export COLOR_RED="\[\e[31m\]"
-export COLOR_BLUE="\[\033[36m\]"
+export COLOR_BOLD="\[$(tput bold)\]"
+export COLOR_DEFAULT="\[$(tput sgr0)\]"
+export COLOR_WHITE="\[$(tput setaf 7)\]"
+export COLOR_GREEN="\[$(tput setaf 2)\]"
+export COLOR_YELLOW="\[$(tput setaf 3)\]"
+export COLOR_RED="\[$(tput setaf 1)\]"
+export COLOR_CYAN="\[$(tput setaf 6)\]"
 
 
 # get current branch in git repo
@@ -63,13 +63,13 @@ prompt_cmd () {
     then
         PS1+="$COLOR_RED"
     else
-        PS1+="$COLOR_BLUE"
+        PS1+="$COLOR_CYAN"
     fi
     PS1+="\u"
     PS1+="$COLOR_WHITE@"
     PS1+="$COLOR_GREEN\h"
     PS1+="$COLOR_WHITE:"
-    PS1+="$COLOR_YELLOW\W"
+    PS1+="$COLOR_BOLD$COLOR_YELLOW\W"
     # Add git branch and status if applicable
     if type parse_git_branch > /dev/null 2>&1; then
         PS1+=$(parse_git_branch)
@@ -81,7 +81,7 @@ prompt_cmd () {
         PS1+="$COLOR_RED"
     fi
     PS1+='\$ '
-    PS1+="$COLOR_WHITE"
+    PS1+="$COLOR_DEFAULT"
     export PROMPT=$PS1
 }
 
