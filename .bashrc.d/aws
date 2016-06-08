@@ -1,5 +1,5 @@
 # Load aws cli completion if installed
 
-if [ -f /usr/local/bin/aws_completer ]; then
-  complete -C '/usr/local/bin/aws_completer' aws
+if $(which aws_completer > /dev/null 2>&1); then
+  complete -C $(which aws_completer) aws
 fi
