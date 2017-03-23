@@ -1,1 +1,2 @@
 export GOPATH=/Users/jacob/Projects/go
+export PATH=$PATH:$GOPATH/bin
