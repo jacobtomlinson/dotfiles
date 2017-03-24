@@ -1,0 +1,2 @@
+# Source boxen environment if installed
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
