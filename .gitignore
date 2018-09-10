@@ -24,10 +24,13 @@ Temporary Items
 .apdisk
 
 
-### User ### 
+### User ###
 
 # Remove private files
 
 .bashrc.d/private*
 !.bashrc.d/private_example
 
+
+.zshrc.d/private*
+!.zshrc.d/private_example
