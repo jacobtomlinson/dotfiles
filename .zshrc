@@ -18,6 +18,12 @@ source $ZSH/oh-my-zsh.sh
 
 # Completion
 autoload -U compinit && compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
+
 zmodload -i zsh/complist
 fpath=($fpath ~/.zsh/completion)
 
