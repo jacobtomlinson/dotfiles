@@ -9,7 +9,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/boxen/homebrew/bi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git github git-extras aws docker nyan osx pip python screen sudo tmux)
+plugins=(git github git-extras aws docker nyan osx pip python screen sudo tmux command-time)
 
 # User configuration
 
@@ -19,6 +19,7 @@ source $ZSH/oh-my-zsh.sh
 
 autoload -U compinit && compinit
 zmodload -i zsh/complist
+fpath=($fpath ~/.zsh/completion)
 
 # Source all files in ~/.zshrc.d/
 for i in ~/.zshrc.d/* ; do
