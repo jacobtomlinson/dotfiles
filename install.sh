@@ -37,17 +37,12 @@ link_file ()
   fi
 }
 
-if [ ! -d "$HOME/Projects/forks/zsh-git-prompt" ]; then
-  git clone https://github.com/olivierverdier/zsh-git-prompt.git $HOME/Projects/forks/zsh-git-prompt
-fi
-
 link_file .bashrc
 link_file .bash_profile
 link_file .bashrc.d
 link_file .zshrc
 link_file .zshrc.d
 link_file .zsh
+link_file .zsh_plugins.txt
 link_file .vimrc
 link_file .tmux.config
-
-git submodule foreach --recursive git checkout master

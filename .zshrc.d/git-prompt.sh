@@ -1,3 +1,0 @@
-if [ -d "$HOME/Projects/forks/zsh-git-prompt" ]; then
-    source $HOME/Projects/forks/zsh-git-prompt/zshrc.sh
-fi

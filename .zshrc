@@ -1,20 +1,11 @@
 # Set path
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/boxen/homebrew/bin"
 
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/jacob/.oh-my-zsh
-
-# Start tmux on login
-# export ZSH_TMUX_AUTOSTART=true
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git github git-extras aws docker osx pip python screen sudo tmux command-time)
-
-# Load oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+# Antibody
+if [[ -n ~/.zsh_plugins.txt(#qN.mh+24) ]]; then
+    antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
+fi
+source ~/.zsh_plugins.sh
 
 # Completion
 fpath=($fpath ~/.zsh/completion)
@@ -23,7 +14,7 @@ if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
 	compinit;
 else
 	compinit -C;
-fi;
+fi
 
 # Source all files in ~/.zshrc.d/
 for i in ~/.zshrc.d/* ; do
