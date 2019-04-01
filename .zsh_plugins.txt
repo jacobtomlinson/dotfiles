@@ -14,6 +14,11 @@ robbyrussell/oh-my-zsh path:plugins/screen
 robbyrussell/oh-my-zsh path:plugins/sudo
 robbyrussell/oh-my-zsh path:plugins/tmux
 
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-syntax-highlighting
+
+djui/alias-tips
 popstas/zsh-command-time
 olivierverdier/zsh-git-prompt
 
