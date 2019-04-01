@@ -1,0 +1,46 @@
+#compdef eksctl
+
+_arguments \
+  '1: :->level1' \
+  '2: :->level2' \
+  '3: :_files'
+case $state in
+  level1)
+    case $words[1] in
+      eksctl)
+        _arguments '1: :(completion create delete get help scale utils version)'
+      ;;
+      *)
+        _arguments '*: :_files'
+      ;;
+    esac
+  ;;
+  level2)
+    case $words[2] in
+      completion)
+        _arguments '2: :(bash zsh)'
+      ;;
+      create)
+        _arguments '2: :(cluster nodegroup)'
+      ;;
+      delete)
+        _arguments '2: :(cluster nodegroup)'
+      ;;
+      get)
+        _arguments '2: :(cluster nodegroup)'
+      ;;
+      scale)
+        _arguments '2: :(nodegroup)'
+      ;;
+      utils)
+        _arguments '2: :(describe-stacks update-cluster-stack wait-nodes write-kubeconfig)'
+      ;;
+      *)
+        _arguments '*: :_files'
+      ;;
+    esac
+  ;;
+  *)
+    _arguments '*: :_files'
+  ;;
+esac
