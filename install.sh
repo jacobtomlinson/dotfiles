@@ -46,6 +46,7 @@ link_file .bash_profile
 link_file .bashrc.d
 link_file .zshrc
 link_file .zshrc.d
+link_file .zsh
 link_file .vimrc
 link_file .tmux.config
 
