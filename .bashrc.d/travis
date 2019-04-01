@@ -1,2 +1,0 @@
-# Source travis completion if the gem is installed
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
