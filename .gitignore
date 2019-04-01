@@ -33,4 +33,4 @@ Temporary Items
 
 
 .zshrc.d/private*
-!.zshrc.d/private_example
+!.zshrc.d/private_example.zsh
