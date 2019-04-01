@@ -1,6 +1,8 @@
+# Set path
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/boxen/homebrew/bin"
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/jacob/.oh-my-zsh
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/boxen/homebrew/bin"
 
 # Start tmux on login
 # export ZSH_TMUX_AUTOSTART=true
@@ -11,12 +13,10 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/boxen/homebrew/bi
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git github git-extras aws docker nyan osx pip python screen sudo tmux command-time)
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
+# Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# Completion
 autoload -U compinit && compinit
 zmodload -i zsh/complist
 fpath=($fpath ~/.zsh/completion)
