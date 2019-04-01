@@ -2,8 +2,9 @@
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/boxen/homebrew/bin"
 
 # Antibody
+alias antibody_update='antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh'
 if [[ -n ~/.zsh_plugins.txt(#qN.mh+24) ]]; then
-    antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
+    antibody_update
 fi
 source ~/.zsh_plugins.sh
 
