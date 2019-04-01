@@ -1,14 +1,10 @@
-if (( $+commands[kubectl] )); then
-    __KUBECTL_COMPLETION_FILE="${ZSH_CACHE_DIR}/kubectl_completion"
-
-    if [[ ! -f $__KUBECTL_COMPLETION_FILE ]]; then
-        kubectl completion zsh >! $__KUBECTL_COMPLETION_FILE
+function kubectl() {
+    if ! type __start_kubectl >/dev/null 2>&1; then
+        source <(command kubectl completion zsh)
     fi
 
-    [[ -f $__KUBECTL_COMPLETION_FILE ]] && source $__KUBECTL_COMPLETION_FILE
-
-    unset __KUBECTL_COMPLETION_FILE
-fi
+    command kubectl "$@"
+}
 
 # This command is used a LOT both below and in daily life
 alias k=kubectl

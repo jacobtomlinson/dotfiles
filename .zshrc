@@ -11,7 +11,7 @@ export ZSH=/Users/jacob/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git github git-extras aws docker nyan osx pip python screen sudo tmux command-time)
+plugins=(git github git-extras aws docker osx pip python screen sudo tmux command-time)
 
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
