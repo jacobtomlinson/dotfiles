@@ -17,15 +17,13 @@ plugins=(git github git-extras aws docker osx pip python screen sudo tmux comman
 source $ZSH/oh-my-zsh.sh
 
 # Completion
+fpath=($fpath ~/.zsh/completion)
 autoload -U compinit && compinit
 if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
 	compinit;
 else
 	compinit -C;
 fi;
-
-zmodload -i zsh/complist
-fpath=($fpath ~/.zsh/completion)
 
 # Source all files in ~/.zshrc.d/
 for i in ~/.zshrc.d/* ; do
