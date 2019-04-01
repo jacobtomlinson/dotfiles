@@ -6,6 +6,7 @@ alias antibody_update='antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh'
 if [[ -n ~/.zsh_plugins.txt(#qN.mh+24) ]]; then
     antibody_update
 fi
+export ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
 source ~/.zsh_plugins.sh
 
 # Completion
