@@ -3,7 +3,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 PROMPT='%{$fg[$NCOLOR]%}%n%{$reset_color%}@%{$fg[green]%}%m\
 %{$reset_color%}:\
-%{$fg[magenta]%}%1d\
+%{$fg[magenta]%}%1d%{$reset_color%}\
 $(git_super_status) \
 $(kube_ps1)\
 
