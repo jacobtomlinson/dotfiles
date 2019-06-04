@@ -46,3 +46,4 @@ link_file .zsh
 link_file .zsh_plugins.txt
 link_file .vimrc
 link_file .tmux.config
+link_file .k9s

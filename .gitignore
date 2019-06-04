@@ -34,3 +34,6 @@ Temporary Items
 
 .zshrc.d/private*
 !.zshrc.d/private_example.zsh
+
+# Ignore k9s config as it is dynamically generated
+.k9s/config.yml
