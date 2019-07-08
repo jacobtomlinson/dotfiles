@@ -7,8 +7,10 @@ if [ -f /opt/boxen/homebrew/bin/brew ]; then
   fi
 fi
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  source $(brew --prefix)/etc/bash_completion
+if [ -f /opt/boxen/homebrew/bin/brew ]; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    source $(brew --prefix)/etc/bash_completion
+  fi
 fi
 
 # Linux
