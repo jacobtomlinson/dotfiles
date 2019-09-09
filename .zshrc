@@ -1,5 +1,8 @@
 # Set path
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/boxen/homebrew/bin"
+export PATH="/Users/jtomlinson/miniconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/boxen/homebrew/bin"
+
+# Set colours
+export TERM="xterm-256color"
 
 # Antibody
 alias antibody_update='antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh'
