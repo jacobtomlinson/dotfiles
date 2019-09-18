@@ -19,9 +19,7 @@ zsh-users/zsh-history-substring-search
 zsh-users/zsh-syntax-highlighting
 
 djui/alias-tips
-# popstas/zsh-command-time
-# olivierverdier/zsh-git-prompt
-# jonmosco/kube-ps1
+MichaelAquilina/zsh-auto-notify
 
 # Themes
 bhilburn/powerlevel9k powerlevel9k
