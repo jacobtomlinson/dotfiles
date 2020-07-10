@@ -39,6 +39,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Enable backspace
+set backspace=indent,eol,start
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -60,7 +63,7 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 
 " Set tabwidth for web
-au BufNewFile,BufRead *.js, *.html, *.css
+au BufNewFile,BufRead *.js, *.html, *.css, *.yaml
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2

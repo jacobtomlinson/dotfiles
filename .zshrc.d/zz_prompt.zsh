@@ -1,4 +1,4 @@
-# Names zz so that it is last to load
+# Named zz so that it is last to load
 
 POWERLEVEL9K_MODE='nerdfont-complete'
 

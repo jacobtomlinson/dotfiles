@@ -3,14 +3,14 @@ if hash pyenv 2>/dev/null; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
-__conda_setup="$('/Users/jtomlinson/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('~/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/jtomlinson/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/jtomlinson/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "~/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "~/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/jtomlinson/miniconda3/bin:$PATH"
+        export PATH="~/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -25,3 +25,5 @@ powerline_anaconda() {
     echo "$(basename $_path | grep -v miniconda3)"
   fi
 }
+
+alias ca="conda activate"
