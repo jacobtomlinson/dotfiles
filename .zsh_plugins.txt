@@ -7,7 +7,7 @@ robbyrussell/oh-my-zsh path:plugins/git-extras
 robbyrussell/oh-my-zsh path:plugins/github
 robbyrussell/oh-my-zsh path:plugins/helm
 robbyrussell/oh-my-zsh path:plugins/iterm2
-robbyrussell/oh-my-zsh path:plugins/osx
+robbyrussell/oh-my-zsh path:plugins/macos
 robbyrussell/oh-my-zsh path:plugins/pip
 robbyrussell/oh-my-zsh path:plugins/python
 robbyrussell/oh-my-zsh path:plugins/screen

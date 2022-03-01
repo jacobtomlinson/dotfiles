@@ -1,5 +1,5 @@
 # Set path
-export PATH="~/miniconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/boxen/homebrew/bin"
+export PATH="$HOME/.local/bin:$HOME/miniconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/boxen/homebrew/bin"
 
 # Set colours
 export TERM="xterm-256color"
