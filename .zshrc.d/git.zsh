@@ -14,3 +14,5 @@ unalias glum
 function glum () {
 	git pull upstream $(gdb upstream)
 }
+
+alias pr="gh pr checkout"
