@@ -22,7 +22,7 @@ powerline_anaconda() {
   # variant works even if both are set.
   local _path=$CONDA_ENV_PATH$CONDA_PREFIX
   if ! [ -z "$_path" ]; then
-    echo "$(basename $_path | grep -v miniconda3)"
+    echo "$(basename $_path | grep -v miniconda3 | grep -v mambaforge)"
   fi
 }
 
