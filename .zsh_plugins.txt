@@ -22,4 +22,4 @@ djui/alias-tips
 MichaelAquilina/zsh-auto-notify
 
 # Themes
-bhilburn/powerlevel9k powerlevel9k
+romkatv/powerlevel10k

@@ -1,4 +1,4 @@
-function gdb () {
+function gub () {
 	REMOTE=${1:-upstream}
 	git fetch $REMOTE
 	git remote show $REMOTE | grep "HEAD branch" | sed 's/.*: //'
@@ -7,12 +7,12 @@ function gdb () {
 
 unalias gcm
 function gcm () {
-       git checkout $(gdb $1)
+       git checkout $(gub $1)
 }
 
 unalias glum
 function glum () {
-	git pull upstream $(gdb upstream)
+	git pull upstream $(gub upstream)
 }
 
 alias pr="gh pr checkout"

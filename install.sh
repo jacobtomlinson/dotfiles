@@ -47,3 +47,6 @@ link_file .zsh_plugins.txt
 link_file .vimrc
 link_file .tmux.conf
 link_file .k9s
+link_file .gitconfig
+link_file .gitignore
+link_file .gitignore_global
