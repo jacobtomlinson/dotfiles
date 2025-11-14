@@ -9,8 +9,15 @@ fi
 # Set colours
 export TERM="xterm-256color"
 
-# Antibody
-source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+# Install ZSH plugins via antidote
+for d in "/opt/homebrew/opt/antidote/share/antidote/" ${ZDOTDIR:-~}/.antidote; do 
+  if [ -d "$d" ]; then
+    ANTIDOTE_DIR="$d"
+    break
+  fi
+done
+source "$ANTIDOTE_DIR/antidote.zsh"
+unset -v ANTIDOTE_DIR
 alias antibody_update='antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh'
 if [[ -n ~/.zsh_plugins.txt(#qN.mh+24) ]]; then
     antibody_update
@@ -37,4 +44,3 @@ done
 if [[ -n "$ZSH_DEBUGRC" ]]; then
   zprof
 fi
-
