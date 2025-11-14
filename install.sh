@@ -7,30 +7,32 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P )
 
 link_file ()
 {
+  SRC="$1"
+  DEST="${2:-$1}"
 
-  if [ -h "$HOME/$1" ]; then
-    if [ "$(pwd -P $HOME/$1)/$1" == $DIR/$1 ]; then
-      echo "Your $1 is already linked up, good job!"
+  if [ -h "$HOME/$DEST" ]; then
+    if [ "$(pwd -P $HOME/$SRC)/$DEST" == $DIR/$DEST ]; then
+      echo "Your $SRC is already linked up, good job!"
     else
-      echo "Your $1 is already a symlink to something else, I'll leave you to fix that. Quickest fix is to delete the link and run this script again."
+      echo "Your $SRC is already a symlink to something else, I'll leave you to fix that. Quickest fix is to delete the link and run this script again."
     fi
   else
-    if [ -a "$HOME/$1" ]; then
+    if [ -a "$HOME/$DEST" ]; then
 
-      echo "Your $1 already exists, backing up to $BACKUPDIR and replacing."
-      if [ $1 == .bashrc ] || [ $1 == .bash_profile ]; then
+      echo "Your $SRC already exists, backing up to $BACKUPDIR and replacing."
+      if [ $SRC == .bashrc ] || [ $SRC == .bash_profile ]; then
         echo "You might want to copy it into .bashrc.d if you want to keep it."
       fi
       mkdir $BACKUPDIR
-      mv $HOME/$1 $BACKUPDIR
+      mv $HOME/$DEST $BACKUPDIR
 
     fi
 
-    ln -s $DIR/$1 $HOME/$1
+    ln -s $DIR/$SRC $HOME/$DEST
     if [ $? -eq 0 ]; then
-      echo "$DIR/$1 successfully linked to $HOME/$1."
+      echo "$DIR/$SRC successfully linked to $HOME/$DEST."
     else
-      echo "$DIR/$1 failed to link to $HOME/$1. Investigate and try again."
+      echo "$DIR/$SRC failed to link to $HOME/$DEST. Investigate and try again."
       exit 1
     fi
 
@@ -50,3 +52,4 @@ link_file .k9s
 link_file .gitconfig
 link_file .gitignore
 link_file .gitignore_global
+link_file starship.toml .config/starship.toml

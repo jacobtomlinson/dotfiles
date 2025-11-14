@@ -1,12 +1,10 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Set path
-export PATH="$HOME/.local/bin:$HOME/miniconda3/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+# Debug zsh startup time
+if [[ -n "$ZSH_DEBUGRC" ]]; then
+  zmodload zsh/zprof
+fi
 
 # Set colours
 export TERM="xterm-256color"
@@ -36,11 +34,7 @@ for i in ~/.zshrc.d/* ; do
     fi
 done
 
+if [[ -n "$ZSH_DEBUGRC" ]]; then
+  zprof
+fi
 
-# >>> nvwb
-# Sourcing the nvwb wrapper function was added during the NVIDIA AI Workbench installation and
-# is required for NVIDIA AI Workbench to function properly. When uninstalling
-# NVIDIA AI Workbench, it will be removed. 
-
-source $HOME/.local/share/nvwb/nvwb-wrapper.sh
-# >>> nvwb
