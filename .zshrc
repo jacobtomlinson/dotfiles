@@ -1,6 +1,13 @@
 # Set path
 export PATH="$HOME/.zsh/bin:$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
+for dependency in "curl" "git" "tmux"; do
+  if ! hash $dependency 2> /dev/null; then
+    echo ".zshrc aborted: $dependency could not be found"
+    exit 1
+  fi
+done
+
 # Debug zsh startup time
 if [[ -n "$ZSH_DEBUGRC" ]]; then
   zmodload zsh/zprof
