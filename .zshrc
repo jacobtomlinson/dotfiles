@@ -1,9 +1,6 @@
 # Set path
 export PATH="$HOME/.zsh/bin:$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-# Install shell preflight
-shell_preflight
-
 # Debug zsh startup time
 if [[ -n "$ZSH_DEBUGRC" ]]; then
   zmodload zsh/zprof
@@ -19,10 +16,12 @@ for f in "/opt/homebrew/opt/antidote/share/antidote/antidote.zsh" "$HOME/.antido
     break
   fi
 done
+
 if [ ! -n "$ANTIDOTE_INIT_PATH" ]; then
   echo "Antidote could not be found, installing..."
   git clone --depth=1 https://github.com/mattmc3/antidote.git "$HOME/.antidote"
-  ANTIDOTE_INIT_PATH="$HOME/.antidote/antidote.zsh"fi
+  ANTIDOTE_INIT_PATH="$HOME/.antidote/antidote.zsh"
+fi
 source "$ANTIDOTE_INIT_PATH"
 if [[ -n ~/.zsh_plugins.txt(#qN.mh+24) ]]; then
     antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
