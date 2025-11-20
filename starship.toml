@@ -6,12 +6,12 @@ $os\
 $username\
 $hostname\
 [ ](bg:color_purple)\
-[](bg:color_yellow fg:color_purple)\
+[](fg:prev_bg bg:color_yellow)\
 $directory\
-[](fg:color_yellow bg:color_aqua)\
+[](fg:prev_bg bg:color_aqua)\
 $git_branch\
 $git_status\
-[](fg:color_aqua bg:color_blue)\
+[](fg:prev_bg bg:color_blue)\
 $c\
 $cpp\
 $rust\
@@ -22,11 +22,11 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:color_blue bg:color_bg3)\
+[](fg:prev_bg bg:color_bg3)\
 $docker_context\
 $conda\
 $pixi\
-[ ](fg:color_bg3 bg:color_bg1)\
+[ ](fg:prev_bg bg:color_bg2)\
 $line_break$character"""
 
 right_format = """
@@ -83,6 +83,7 @@ format = '[ $user]($style)'
 
 [hostname]
 style = "bg:color_purple fg:bold color_fg0"
+ssh_only = false
 format = '[/$hostname]($style)'
 
 [directory]
