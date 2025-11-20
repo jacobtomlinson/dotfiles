@@ -1,9 +1,9 @@
 [user]
 	email = jtomlinson@nvidia.com
-	name = \"Jacob Tomlinson\"
-	signingkey = /Users/jtomlinson/.ssh/id_rsa.pub
+	name = Jacob Tomlinson
+	signingkey = ~/.ssh/id_rsa.pub
 [core]
-	excludesfile = /Users/jtomlinson/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [credential]
 	helper = cache
 [pull]
