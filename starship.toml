@@ -85,6 +85,7 @@ format = '[ $user]($style)'
 style = "bg:color_purple fg:bold color_fg0"
 ssh_only = false
 format = '[/$hostname]($style)'
+aliases = {"Jacobs-MacBook-Air-M4" = "macbook-air"}
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
