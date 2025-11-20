@@ -56,6 +56,17 @@ copy_file ()
     fi
 }
 
+ensure_dir ()
+{
+  DIR="$1"
+  if [ ! -d "$HOME/$DIR" ]; then
+    mkdir -p "$HOME/$DIR"
+  fi
+}
+
+# Ensure config directories exist
+ensure_dir .config
+
 link_file .bashrc
 link_file .bash_profile
 link_file .bashrc.d
