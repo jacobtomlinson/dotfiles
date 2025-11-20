@@ -20,6 +20,4 @@ zsh-users/zsh-syntax-highlighting
 
 djui/alias-tips
 MichaelAquilina/zsh-auto-notify
-
-# Themes
-bhilburn/powerlevel9k powerlevel9k
+conda-incubator/conda-zsh-completion

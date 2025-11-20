@@ -1,12 +1,3 @@
-# Lazy load of kubectl completion
-function kubectl() {
-    if ! type __start_kubectl >/dev/null 2>&1; then
-        source <(command kubectl completion zsh)
-    fi
-
-    command kubectl "$@"
-}
-
 # This command is used a LOT both below and in daily life
 alias k=kubectl
 

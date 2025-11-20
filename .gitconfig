@@ -1,15 +1,19 @@
-
-[hub]
-protocol = https
-
-[core]
-	excludesfile = /Users/jacob/.gitignore_global
-	autocrlf = false
 [user]
-	name = Jacob Tomlinson
-	email = jacob.tomlinson@informaticslab.co.uk
-#	email = jacob@jacobtomlinson.co.uk
-	signingkey = 3758F3178873DC6D
+	email = jtomlinson@nvidia.com
+	name = \"Jacob Tomlinson\"
+	signingkey = /Users/jtomlinson/.ssh/id_rsa.pub
+[core]
+	excludesfile = /Users/jtomlinson/.gitignore_global
+[credential]
+	helper = cache
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
+[gpg]
+	format = ssh
+[hub]
+	protocol = https
 [push]
 	default = simple
 [alias]
@@ -25,3 +29,8 @@ protocol = https
 	tool = opendiff
 [commit]
 	gpgsign = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
