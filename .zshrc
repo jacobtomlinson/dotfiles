@@ -1,5 +1,8 @@
 # Set path
-export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.zsh/bin:$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+# Install shell preflight
+shell_preflight
 
 # Debug zsh startup time
 if [[ -n "$ZSH_DEBUGRC" ]]; then
@@ -9,11 +12,20 @@ fi
 # Set colours
 export TERM="xterm-256color"
 
-# Antibody
-source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
-alias antibody_update='antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh'
+# Antidote
+for f in "/opt/homebrew/opt/antidote/share/antidote/antidote.zsh" "$HOME/.antidote/antidote.zsh"; do 
+  if [ -f "$f" ]; then
+    ANTIDOTE_INIT_PATH="$f"
+    break
+  fi
+done
+if [ ! -n "$ANTIDOTE_INIT_PATH" ]; then
+  echo "Antidote could not be found, installing..."
+  git clone --depth=1 https://github.com/mattmc3/antidote.git "$HOME/.antidote"
+  ANTIDOTE_INIT_PATH="$HOME/.antidote/antidote.zsh"fi
+source "$ANTIDOTE_INIT_PATH"
 if [[ -n ~/.zsh_plugins.txt(#qN.mh+24) ]]; then
-    antibody_update
+    antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 fi
 export ZSH="$(antidote home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
 source ~/.zsh_plugins.sh
