@@ -58,9 +58,8 @@ copy_file ()
 
 ensure_dir ()
 {
-  DIR="$1"
-  if [ ! -d "$HOME/$DIR" ]; then
-    mkdir -p "$HOME/$DIR"
+  if [ ! -d "$HOME/$1" ]; then
+    mkdir -p "$HOME/$1"
   fi
 }
 
