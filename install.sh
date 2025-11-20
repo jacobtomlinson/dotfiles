@@ -49,7 +49,8 @@ link_file .zsh_plugins.txt
 link_file .vimrc
 link_file .tmux.conf
 link_file .k9s
-link_file .gitconfig
+# Git replaces symlinks with copies when updating config files, so we might as well just copy the file
+cp .gitconfig ~/.gitconfig
 link_file .gitignore
 link_file .gitignore_global
 link_file starship.toml .config/starship.toml
