@@ -39,6 +39,23 @@ link_file ()
   fi
 }
 
+copy_file ()
+{
+  SRC="$1"
+  DEST="${2:-$1}"
+  if [ -h "$HOME/$DEST" ]; then
+    echo "Your $SRC is already a symlink to $(readlink "$HOME/$DEST"), removing the link."
+    rm "$HOME/$DEST"
+  fi
+  cp $DIR/$SRC $HOME/$DEST
+    if [ $? -eq 0 ]; then
+      echo "$DIR/$SRC successfully copied to $HOME/$DEST."
+    else
+      echo "$DIR/$SRC failed to copy to $HOME/$DEST. Investigate and try again."
+      exit 1
+    fi
+}
+
 link_file .bashrc
 link_file .bash_profile
 link_file .bashrc.d
@@ -50,7 +67,7 @@ link_file .vimrc
 link_file .tmux.conf
 link_file .k9s
 # Git replaces symlinks with copies when updating config files, so we might as well just copy the file
-cp .gitconfig ~/.gitconfig
+copy_file .gitconfig
 link_file .gitignore
 link_file .gitignore_global
 link_file starship.toml .config/starship.toml
