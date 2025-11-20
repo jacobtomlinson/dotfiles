@@ -2,7 +2,7 @@
 #
 # Script to install my dotfiles
 
-BACKUPDIR="$HOME/dotfiles-backup/"
+BACKUPDIR="$HOME/.dotfiles-backup-$(date +%Y-%m-%d-%H-%M-%S)/"
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P )
 
 link_file ()
