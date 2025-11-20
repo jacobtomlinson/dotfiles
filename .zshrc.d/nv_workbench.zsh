@@ -3,5 +3,7 @@
 # is required for NVIDIA AI Workbench to function properly. When uninstalling
 # NVIDIA AI Workbench, it will be removed. 
 
-source $HOME/.local/share/nvwb/nvwb-wrapper.sh
+if [ -f $HOME/.local/share/nvwb/nvwb-wrapper.sh ]; then
+    source $HOME/.local/share/nvwb/nvwb-wrapper.sh
+fi
 # >>> nvwb
