@@ -98,6 +98,7 @@ truncation_symbol = ""
 
 [battery]
 format = "$symbol"
+unknown_symbol = '󰂄 '  # Workaround for https://github.com/starship/starship/issues/7136
 
 [[battery.display]]
 discharging_symbol = '󰁹 '
