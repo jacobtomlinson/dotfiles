@@ -82,11 +82,15 @@ style_root = "bg:color_purple fg:bold color_fg0"
 style_user = "bg:color_purple fg:bold color_fg0"
 
 [hostname]
-aliases = {"Jacobs-MacBook-Air-M4" = "macbook-air"}
 detect_env_vars = ["!TMUX_PANE"]
 format = '[ $hostname]($style)'
 ssh_only = false
 style = "bg:color_purple fg:bold color_fg0"
+
+[hostname.aliases]
+"Jacobs-MacBook-Air-M4" = "macbook-air"
+"GK926344MW" = "macbook-pro"
+"jtomlinson-workstation" = "workstation"
 
 [directory]
 format = "[ $path ]($style)"
