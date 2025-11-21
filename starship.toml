@@ -21,10 +21,8 @@ $php\
 $java\
 $kotlin\
 $haskell\
-$python\
 [](fg:prev_bg bg:color_bg3)\
-$conda\
-$pixi\
+${custom.python_status}\
 [ ](fg:prev_bg)\
 $line_break$character"""
 
@@ -235,3 +233,19 @@ vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
 vimcmd_symbol = '[](bold fg:color_green)'
 vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+
+[custom.python_status]
+command = 'python_status'
+detect_files = [
+    ".python-version",
+    "pyproject.toml",
+    "requirements.txt",
+    "tox.ini",
+    "pixi.toml",
+    "environment.yml",
+    "uv.lock",
+    "__init__.py",
+]
+detect_extensions = ["ipynb", "py"]
+format = '[ $output]($style)'
+style = "bg:color_bg3 fg:#83a598"
