@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+# Show the status of the currently activated python environment
+# Supports:
+# - venv
+# - pixi project
+# - conda environment
+# - system python
+
+import subprocess
+import os
+
+def get_python_version():
+    try:
+        [_, python_version] = subprocess.check_output(["python3", "--version"]).decode("utf-8").strip().split(" ")
+        return " " + ".".join(python_version.split(".")[:2])
+    except:
+        return None
+
+def get_active_conda_environment():
+    return os.getenv("CONDA_DEFAULT_ENV")
+
+def get_active_pixi_project():
+    return os.getenv("PIXI_PROJECT_NAME")
+
+def get_venv_path():
+    return os.getenv("VIRTUAL_ENV")
+
+if __name__ == "__main__":
+    if get_venv_path():
+        print(f"venv {get_python_version()}")
+    elif get_active_pixi_project():
+        print(f" {get_active_pixi_project()} {get_python_version()}")
+    elif get_active_conda_environment():
+        print(f"󰙱 {get_active_conda_environment()} {get_python_version()}")
+    else:
+        print(f"system {get_python_version()}")
