@@ -17,3 +17,11 @@ else
 fi
 unset __conda_setup
 alias ca="conda activate"
+
+function cfstatus {
+  if command -v xq >/dev/null 2>&1; then
+    echo "Conda Forge CDN last updated: $(curl -sSL https://conda.anaconda.org/conda-forge/rss.xml | xq '.rss.channel.lastBuildDate')"
+  else
+    echo "cannot find yq/xq, you can install it with 'uv tool add yq' (yes that adds both yq and xq)"
+  fi
+}
