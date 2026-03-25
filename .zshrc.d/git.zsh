@@ -43,6 +43,39 @@ function glum () {
 
 alias pr="gh pr checkout"
 
+gwpr() {
+  local pr_number="$1"
+  if [[ -z "$pr_number" ]]; then
+    echo "Usage: gwpr <pr-number>" >&2
+    return 1
+  fi
+
+  # Get the branch name from the PR
+  local branch
+  branch="$(gh pr view "$pr_number" --json headRefName --jq .headRefName)" || return 1
+
+  # If the worktree already exists, just cd there
+  local toplevel
+  toplevel="$(git rev-parse --show-toplevel 2>/dev/null)" || return 1
+  local projects_dir="$HOME/Projects"
+  local suffix="${toplevel#"$projects_dir"/}"
+  local worktree_dir="$HOME/Worktrees/$suffix/$branch"
+
+  if [[ -d "$worktree_dir" ]]; then
+    cd "$worktree_dir"
+    return
+  fi
+
+  # Check out the PR to get a local branch
+  gh pr checkout "$pr_number" || return 1
+
+  # Switch back to main so the primary repo stays on main
+  git checkout "$(gub)" || return 1
+
+  # Use gw to set up a worktree for the PR branch
+  gw "$branch"
+}
+
 gw() {
   local branch="$1"
   if [[ -z "$branch" ]]; then
@@ -64,7 +97,17 @@ gw() {
   fi
 
   local worktree_dir="$HOME/Worktrees/$suffix/$branch"
+
+  if [[ -d "$worktree_dir" ]]; then
+    cd "$worktree_dir"
+    return
+  fi
+
   mkdir -p "$(dirname "$worktree_dir")"
-  git worktree add -b "$branch" "$worktree_dir" || return 1
+  if git show-ref --verify --quiet "refs/heads/$branch"; then
+    git worktree add "$worktree_dir" "$branch" || return 1
+  else
+    git worktree add -b "$branch" "$worktree_dir" || return 1
+  fi
   cd "$worktree_dir"
 }
