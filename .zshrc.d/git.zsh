@@ -42,3 +42,29 @@ function glum () {
 }
 
 alias pr="gh pr checkout"
+
+gw() {
+  local branch="$1"
+  if [[ -z "$branch" ]]; then
+    echo "Usage: gw <branch-name>" >&2
+    return 1
+  fi
+
+  local toplevel
+  toplevel="$(git rev-parse --show-toplevel 2>/dev/null)" || {
+    echo "gw: not inside a git repository" >&2
+    return 1
+  }
+
+  local projects_dir="$HOME/Projects"
+  local suffix="${toplevel#"$projects_dir"/}"
+  if [[ "$suffix" == "$toplevel" ]]; then
+    echo "gw: repo is not under ~/Projects/<org>/<repo>" >&2
+    return 1
+  fi
+
+  local worktree_dir="$HOME/Worktrees/$suffix/$branch"
+  mkdir -p "$(dirname "$worktree_dir")"
+  git worktree add -b "$branch" "$worktree_dir" || return 1
+  cd "$worktree_dir"
+}
