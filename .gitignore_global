@@ -54,3 +54,7 @@ desktop.ini
 .idea
 .iml
 *.sublime-workspace
+
+# Git worktrees #
+##################
+.worktrees

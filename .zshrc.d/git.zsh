@@ -57,9 +57,7 @@ gwpr() {
   # If the worktree already exists, just cd there
   local toplevel
   toplevel="$(git rev-parse --show-toplevel 2>/dev/null)" || return 1
-  local projects_dir="$HOME/Projects"
-  local suffix="${toplevel#"$projects_dir"/}"
-  local worktree_dir="$HOME/Worktrees/$suffix/$branch"
+  local worktree_dir="$toplevel/.worktrees/$branch"
 
   if [[ -d "$worktree_dir" ]]; then
     cd "$worktree_dir"
@@ -89,14 +87,7 @@ gw() {
     return 1
   }
 
-  local projects_dir="$HOME/Projects"
-  local suffix="${toplevel#"$projects_dir"/}"
-  if [[ "$suffix" == "$toplevel" ]]; then
-    echo "gw: repo is not under ~/Projects/<org>/<repo>" >&2
-    return 1
-  fi
-
-  local worktree_dir="$HOME/Worktrees/$suffix/$branch"
+  local worktree_dir="$toplevel/.worktrees/$branch"
 
   if [[ -d "$worktree_dir" ]]; then
     cd "$worktree_dir"
