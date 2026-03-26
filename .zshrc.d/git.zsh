@@ -74,6 +74,20 @@ gwpr() {
   gw "$branch"
 }
 
+gwm() {
+  local toplevel
+  toplevel="$(git rev-parse --show-toplevel 2>/dev/null)" || {
+    echo "gwm: not inside a git repository" >&2
+    return 1
+  }
+
+  # If we're in a worktree, get the path to the main working tree
+  local main_worktree
+  main_worktree="$(git worktree list --porcelain | head -1 | sed 's/^worktree //')"
+
+  cd "$main_worktree"
+}
+
 gw() {
   local branch="$1"
   if [[ -z "$branch" ]]; then
