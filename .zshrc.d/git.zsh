@@ -25,6 +25,10 @@ function gub () {
 
 unalias gcm
 function gcm () {
+    if git rev-parse --is-inside-work-tree &>/dev/null && \
+       [[ "$(git rev-parse --show-toplevel)" != "$(git worktree list --porcelain | head -1 | sed 's/^worktree //')" ]]; then
+        gwm
+    fi
     REMOTE=$(gupstream)
     BRANCH=$(gub $REMOTE)
     echo "Checking out $REMOTE/$BRANCH"
@@ -71,7 +75,7 @@ gwpr() {
   git checkout "$(gub)" || return 1
 
   # Use gw to set up a worktree for the PR branch
-  gw "$branch"
+  gwb "$branch"
 }
 
 gwm() {
@@ -88,7 +92,7 @@ gwm() {
   cd "$main_worktree"
 }
 
-gw() {
+gwb() {
   local branch="$1"
   if [[ -z "$branch" ]]; then
     echo "Usage: gw <branch-name>" >&2
