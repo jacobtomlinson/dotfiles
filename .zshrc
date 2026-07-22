@@ -33,7 +33,7 @@ source "$ANTIDOTE_INIT_PATH"
 if [[ -n ~/.zsh_plugins.txt(#qN.mh+24) ]]; then
     antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 fi
-export ZSH="$(antidote home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+export ZSH="$(antidote path robbyrussell/oh-my-zsh)"
 source ~/.zsh_plugins.sh
 
 # Completion
