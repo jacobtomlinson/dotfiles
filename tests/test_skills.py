@@ -153,6 +153,79 @@ class SkillsTests(unittest.TestCase):
         self.assertEqual(self.git(self.checkout, 'rev-parse', 'HEAD'), before)
         self.assertEqual((self.checkout / 'local').read_text(), 'local')
 
+    def assert_ignored_update_refused(self, original, expected):
+        head = self.git(self.checkout, 'rev-parse', 'HEAD')
+        receipts = (self.state / 'links.json').read_bytes()
+        self.assertEqual(self.git(self.checkout, 'status', '--porcelain'), '')
+        self.assertIn('ignored local content', self.run_cli('sync', ok=False))
+        self.assertEqual(original.read_bytes(), expected)
+        self.assertEqual(self.git(self.checkout, 'rev-parse', 'HEAD'), head)
+        self.assertEqual((self.state / 'links.json').read_bytes(), receipts)
+
+    def test_sync_preserves_private_ignored_file_incoming_same_path(self):
+        self.run_cli()
+        self.skill(self.checkout / 'private-local', 'private original')
+        original = self.checkout / 'private-local/SKILL.md'
+        expected = original.read_bytes()
+        self.skill(self.source / 'private-local', 'upstream replacement')
+        self.publish()
+        self.assert_ignored_update_refused(original, expected)
+
+    def test_sync_preserves_arbitrary_ignored_directory_replaced_by_file(self):
+        self.run_cli()
+        exclude = self.checkout / '.git/info/exclude'
+        exclude.write_text(exclude.read_text() + '\ncache/\n')
+        original = self.checkout / 'cache/subdir/data with space\nand newline'
+        original.parent.mkdir(parents=True)
+        original.write_bytes(b'ignored original')
+        (self.source / 'cache').write_text('upstream file replaces directory')
+        self.publish()
+        self.assert_ignored_update_refused(original, b'ignored original')
+
+    def test_sync_preserves_ignored_symlink_replaced_by_directory(self):
+        self.run_cli()
+        exclude = self.checkout / '.git/info/exclude'
+        exclude.write_text(exclude.read_text() + '\nlinked-cache\n')
+        outside = self.home / 'outside'
+        outside.write_bytes(b'outside original')
+        original = self.checkout / 'linked-cache'
+        original.symlink_to(outside)
+        (self.source / 'linked-cache').mkdir()
+        (self.source / 'linked-cache/data').write_text('upstream file')
+        self.publish()
+        self.assert_ignored_update_refused(original, b'outside original')
+        self.assertTrue(original.is_symlink())
+        self.assertEqual(outside.read_bytes(), b'outside original')
+
+    def test_merge_guard_preserves_ignored_content_created_after_preflight(self):
+        self.run_cli()
+        self.skill(self.source / 'private-race', 'upstream replacement')
+        self.publish()
+        head = self.git(self.checkout, 'rev-parse', 'HEAD')
+        original = self.checkout / 'private-race/SKILL.md'
+        preflight = MODULE.protect_ignored
+        def concurrent_creation(root):
+            preflight(root)
+            original.parent.mkdir()
+            original.write_bytes(b'created after preflight')
+        args = ['skills.py', 'sync', '--repo', str(self.remote), '--no-prompt']
+        with patch.dict(os.environ, self.env, clear=True), patch('sys.argv', args), patch.object(MODULE, 'protect_ignored', side_effect=concurrent_creation):
+            with self.assertRaises(subprocess.CalledProcessError):
+                MODULE.main()
+        self.assertEqual(original.read_bytes(), b'created after preflight')
+        self.assertEqual(self.git(self.checkout, 'rev-parse', 'HEAD'), head)
+
+    def test_sync_allows_unrelated_update_while_preserving_ignored_private(self):
+        self.run_cli()
+        self.skill(self.checkout / 'private-local', 'private original')
+        original = self.checkout / 'private-local/SKILL.md'
+        expected = original.read_bytes()
+        self.skill(self.source / 'two')
+        self.publish()
+        self.run_cli('sync')
+        self.assertEqual(original.read_bytes(), expected)
+        self.assertTrue((self.agents / 'two').is_symlink())
+
     def test_supported_local_installer_link_and_unrelated_link(self):
         self.run_cli()
         source = self.base / 'installer-source'

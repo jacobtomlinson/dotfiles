@@ -14,6 +14,21 @@ def git(root, *args):
     return subprocess.check_output(['git', '-C', str(root), *args], stderr=subprocess.STDOUT).decode().strip()
 
 
+def protect_ignored(root):
+    """Refuse incoming changes overlapping ignored, untracked local content."""
+    def paths(*args):
+        raw = subprocess.check_output(['git', '-C', str(root), *args], stderr=subprocess.STDOUT)
+        return [tuple(os.fsdecode(p).rstrip('/').split('/')) for p in raw.split(b'\0') if p]
+
+    ignored = paths('ls-files', '--others', '--ignored', '--exclude-standard', '-z')
+    incoming = paths('diff', '--name-only', '--no-renames', '-z', 'HEAD', 'FETCH_HEAD')
+    for local in ignored:
+        for remote in incoming:
+            if local[:len(remote)] == remote or remote[:len(local)] == local:
+                raise ValueError('incoming update overlaps ignored local content: ' + '/'.join(local)
+                                 + '; preserve/reconcile it manually before sync')
+
+
 def identity(url):
     url = url.rstrip('/')
     for prefix in ('https://github.com/', 'ssh://git@github.com/', 'git@github.com:'):
@@ -116,7 +131,9 @@ def main():
         else:
             git(root, 'fetch', 'origin', a.branch)
             git(root, 'merge-base', '--is-ancestor', 'HEAD', 'FETCH_HEAD')
-            git(root, 'merge', '--ff-only', 'FETCH_HEAD')
+            protect_ignored(root)
+            # Git also refuses ignored-file overwrites if content appears after preflight.
+            git(root, 'merge', '--ff-only', '--no-overwrite-ignore', 'FETCH_HEAD')
     if not a.dry_run:
         for p in (agents, claude, state):
             p.mkdir(parents=True, exist_ok=True)

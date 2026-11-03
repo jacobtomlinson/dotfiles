@@ -66,7 +66,11 @@ installers can still create new skills there. Whole-root symlinks are refused.
 `skills-sync` requires a clean checkout (including untracked files), on `main`,
 fetches `origin main`, and only fast-forwards if the local HEAD is an ancestor.
 It refuses dirty, local-ahead, divergent, wrong-origin or offline updates. It never
-stashes, resets, rebases or force-updates. Fix the reported condition manually and
+stashes, resets, rebases or force-updates. Before merging it checks incoming paths
+against all ignored local content, including private skills and arbitrary ignore
+rules, and refuses overlapping files or directory/file replacements. Git
+`--no-overwrite-ignore` also guards the merge itself. Unrelated ignored content
+can remain in place during sync. Fix the reported condition manually and
 rerun. Setup can reconcile the existing checkout's links while offline.
 
 ### Creation, editing, adoption and publishing
