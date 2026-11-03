@@ -1,0 +1,2 @@
+#!/bin/bash
+exec python3 "$(cd "$(dirname "$0")/../lib" && pwd)/skills.py" sync "$@"
