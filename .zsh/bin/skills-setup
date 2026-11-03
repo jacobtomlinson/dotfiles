@@ -1,0 +1,3 @@
+#!/bin/bash
+# Bash 3.2 compatible; shared implementation requires Python 3.8+ and Git.
+exec python3 "$(cd "$(dirname "$0")/../lib" && pwd)/skills.py" setup "$@"
